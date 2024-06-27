@@ -1,7 +1,7 @@
 import requests
 
 # URL do endpoint que envia o e-mail
-url = "http://localhost:5001/sentmail"
+url = "https://web-production-e9cc.up.railway.app"
 
 # Dados da requisição
 data = {

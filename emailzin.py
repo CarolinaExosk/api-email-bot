@@ -39,15 +39,12 @@ def enviar_email(mail, nome, image_path):
             encoders.encode_base64(mime)
             msg.attach(mime)
 
-    try:
-        s = smtplib.SMTP(smtp_server, smtp_port)
-        s.starttls()  # Inicializa a conexão TLS
-        s.login(msg['From'], password)
-        s.sendmail(msg['From'], msg['To'], msg.as_string())
-        s.quit()
-        print('Email enviado com sucesso!')
-    except Exception as e:
-        print(f'Erro ao enviar email: {e}')
+
+            s = smtplib.SMTP(smtp_server, smtp_port)
+            s.starttls()  # Inicializa a conexão TLS
+            s.login(msg['From'], password)
+            s.sendmail(msg['From'], msg['To'], msg.as_string())
+            s.quit()
 
 app = Flask(__name__)
 
