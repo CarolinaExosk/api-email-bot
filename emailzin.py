@@ -9,7 +9,7 @@ smtp_port = 587  # Porta para TLS
 
 def enviar_email(mail, nome, image_path):  
     msg = MIMEMultipart('related')
-    msg['Subject'] = "Assunto"
+    msg['Subject'] = "VAI DEIXAR ESSA OPORTUNIDADE PASSAR?"
     msg['From'] = 'proposta@culturainglesacg.com.br'
     msg['To'] = mail
     password = 'London1701#' 
@@ -18,9 +18,6 @@ def enviar_email(mail, nome, image_path):
     corpo_email = f"""
     <html>
     <body>
-        <p>Olá {nome}</p>
-        <p>Seu email é {mail}</p>
-        <p>Veja a imagem abaixo:</p>
         <img src="cid:image1">
     </body>
     </html>
