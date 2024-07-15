@@ -1,13 +1,13 @@
 import requests
 
 # URL do endpoint que envia o e-mail
-url = "https://web-production-e9cc.up.railway.app/sentmail"
+url = "http://localhost:5001/sentmail"
 
 # Dados da requisição
 data = {
     "email": "gustavoataide.trabalho@gmail.com",
     "nome": "gustavito",
-    "image_path": "imagem.png"  # Atualize o caminho para a imagem correta
+    "image_path": "imagem_crianca.png"  # Atualize o caminho para a imagem correta
 }
 
 # Enviando a requisição POST

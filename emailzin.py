@@ -4,15 +4,13 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from flask import Flask, jsonify, request
-smtp_server = 'br1002.hostgator.com.br'
-smtp_port = 587  # Porta para TLS
 
 def enviar_email(mail, nome, image_path):  
     msg = MIMEMultipart('related')
-    msg['Subject'] = "Vai deixar esse desconto passar?"
-    msg['From'] = 'cultura@culturainglesacg.com.br'
+    msg['Subject'] = "Investimento com retorno garantido."
+    msg['From'] = 'comercialculturainglesacg@gmail.com'
     msg['To'] = mail
-    password = 'London1701#' 
+    password = 'cjin nkol lbfo ybgp' 
 
     # Corpo do e-mail em HTML com referência à imagem embutida
     corpo_email = f"""
@@ -36,12 +34,12 @@ def enviar_email(mail, nome, image_path):
             encoders.encode_base64(mime)
             msg.attach(mime)
 
-
-            s = smtplib.SMTP(smtp_server, smtp_port)
-            s.starttls()  # Inicializa a conexão TLS
-            s.login(msg['From'], password)
-            s.sendmail(msg['From'], msg['To'], msg.as_string())
-            s.quit()
+    s = smtplib.SMTP('smtp.gmail.com: 587')
+    s.starttls()
+    s.login(msg['From'], password)
+    s.sendmail(msg['From'], msg['To'], msg.as_string())
+    s.quit()
+    print('Email enviado')
 
 app = Flask(__name__)
 
