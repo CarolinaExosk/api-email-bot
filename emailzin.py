@@ -8,9 +8,9 @@ from flask import Flask, jsonify, request
 def enviar_email(mail, nome, image_path):  
     msg = MIMEMultipart('related')
     msg['Subject'] = "Investimento com retorno garantido."
-    msg['From'] = 'comercialculturainglesacg@gmail.com'
+    msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
-    password = 'cjin nkol lbfo ybgp' 
+    password = 'cjin nkol lbfo ybgp'
 
     # Corpo do e-mail em HTML com referência à imagem embutida
     corpo_email = f"""
@@ -36,7 +36,7 @@ def enviar_email(mail, nome, image_path):
 
     s = smtplib.SMTP('smtp.gmail.com: 587')
     s.starttls()
-    s.login(msg['From'], password)
+    s.login(msg['From'].split('<')[1][:-1], password)
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
     print('Email enviado')
