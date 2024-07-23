@@ -13,40 +13,78 @@ def enviar_email(mail, nome, image_path):
     password = 'cjin nkol lbfo ybgp'
 
     # Corpo do e-mail em HTML com referência à imagem embutida
-    corpo_email = f"""
-        <html>
-        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #052664;">
-            <div style="">
-                <p>O melhor presente que você pode dar a sua criança é a oportunidade de aprender inglês desde cedo.</p>
-                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para vocês:</p>
-                
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li><strong style="font-size: 1.2em; color: red;">Taxa de matrícula:</strong> GRÁTIS.</li>
-                    <li><strong style="font-size: 1.2em; color: red;">20% de desconto na semestralidade:</strong> 6 parcelas de R$ 269,90</li>
-                    <li><strong style="font-size: 1.2em; color: red;">250,00 reais de bônus no material didático:</strong> 6 parcelas de R$ 90,98</li>
-                </ul>
-                
-                <h3 style="color: #c00000">Diferenciais que você só encontra aqui:</h3>
-                
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li><strong> >> Professores altamente qualificados</strong> e especialistas em aulas para crianças;</li>
-                    <li><strong> >> Materiais didáticos internacionais</strong> das melhores editoras do mundo;</li>
-                    <li><strong> >></strong> Infraestrutura com <strong>tecnologia de ponta;</strong></li>
-                    <li><strong> >> Gameficação</strong> para incentivar atitudes positivas;</li>
-                    <li><strong> >> Quadros interativos</strong> com uso de internet, games, vídeos e muito mais;</li>
-                    <li><strong> >> Dupla certificação:</strong> Diploma brasileiro e Certificação Inglesa (<a href="https://culturainglesacg.com.br/certificacoes/" style="color: blue; text-decoration: underline;">Cambridge English Exams</a>);</li>
-                    <li><strong> >> Experiências</strong> gastronômicas e de <em>maker</em>.</li>
-                </ul>
-                
-                <p>Garanta agora o futuro brilhante de sua criança!</p>
-                
-                <p style="font-size: 1.2em; color: #c00000;"><strong>Faça a matrícula já! 🌟🚀</strong></p>
-                
-                <p>Oferta válida somente até sábado ou enquanto durar as vagas. Exclusivo na unidade Campina Grande-PB.</p>
-            </div>
-        </body>
-        </html>
-        """
+    if image_path == "crianca":
+        corpo_email = f"""
+            <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #052664;">
+                <div style="">
+                    <p>O melhor presente que você pode dar a sua criança é a oportunidade de aprender inglês desde cedo.</p>
+                    <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para vocês:</p>
+                    
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li><strong style="font-size: 1.2em; color: red;">Taxa de matrícula:</strong> GRÁTIS.</li>
+                        <li><strong style="font-size: 1.2em; color: red;">20% de desconto na semestralidade:</strong> 6 parcelas de R$ 269,90</li>
+                        <li><strong style="font-size: 1.2em; color: red;">250,00 reais de bônus no material didático:</strong> 6 parcelas de R$ 90,98</li>
+                    </ul>
+                    
+                    <h3 style="color: #c00000">Diferenciais que você só encontra aqui:</h3>
+                    
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li><strong> >> Professores altamente qualificados</strong> e especialistas em aulas para crianças;</li>
+                        <li><strong> >> Materiais didáticos internacionais</strong> das melhores editoras do mundo;</li>
+                        <li><strong> >></strong> Infraestrutura com <strong>tecnologia de ponta;</strong></li>
+                        <li><strong> >> Gameficação</strong> para incentivar atitudes positivas;</li>
+                        <li><strong> >> Quadros interativos</strong> com uso de internet, games, vídeos e muito mais;</li>
+                        <li><strong> >> Dupla certificação:</strong> Diploma brasileiro e Certificação Inglesa (<a href="https://culturainglesacg.com.br/certificacoes/" style="color: blue; text-decoration: underline;">Cambridge English Exams</a>);</li>
+                        <li><strong> >> Experiências</strong> gastronômicas e de <em>maker</em>.</li>
+                    </ul>
+                    
+                    <p>Garanta agora o futuro brilhante de sua criança!</p>
+                    
+                    <p style="font-size: 1.2em; color: #c00000;"><strong>Faça a matrícula já! 🌟🚀</strong></p>
+                    
+                    <p>Oferta válida somente até sábado ou enquanto durar as vagas. Exclusivo na unidade Campina Grande-PB.</p>
+                </div>
+            </body>
+            </html>
+            """
+    else:
+        corpo_email = """<html>
+                <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+                    <div>
+                        <p>O <strong>CULTURA EXPRESS</strong> é um curso de inglês desenhado de forma a aproveitar o melhor das várias abordagens do ensino de línguas para jovens e adultos, e tem como objetivo que você aprenda de forma rápida e prazerosa.</p>
+                        <p>Ele leva em consideração a forma de pensar do aluno e também as etapas necessárias na aula, para que você fale com confiança sobre as diversas situações do dia a dia.</p>
+                        <p>Toda aula, há um trabalho de intensa prática oral e há um momento também em que os alunos param para ver se estão realmente aprendendo. Depois disso, eles interagem entre si, simulando situações da vida real, de uma forma bastante personalizada e divertida.</p>
+                        <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para vocês:</p>
+                        
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li><strong style="font-size: 1.2em; color: red;">Taxa de matrícula:</strong> GRÁTIS.</li>
+                            <li><strong style="font-size: 1.2em; color: red;">20% de desconto na semestralidade:</strong> 6 parcelas de R$ 298,90</li>
+                            <li><strong style="font-size: 1.2em; color: red;">250,00 reais de bônus no material didático:</strong> 6 parcelas de R$ 90,98</li>
+                        </ul>
+                        
+                        <h3 style="color: #c00000">Diferenciais que você só encontra aqui:</h3>
+                        
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li><strong> >> Professores altamente qualificados</strong> e especialistas em aulas para jovens e adultos;</li>
+                            <br>
+                            <li><strong> >> Materiais didáticos internacionais</strong> das melhores editoras do mundo;</li>
+                            <br>
+                            <li> <strong>>></strong> Infraestrutura com <strong>tecnologia de ponta;</strong></li>
+                            <br>
+                            <li><strong> >> Gameficação</strong> para incentivar atitudes positivas;</li>
+                            <br>
+                            <li><strong> >> Quadros interativos</strong> com uso de internet, vídeos, podcasts e muito mais;</li>
+                            <br>
+                            <li><strong> >> Dupla certificação:</strong> Diploma brasileiro e Certificação Inglesa (<a href="https://culturainglesacg.com.br/certificacoes/" style="color: blue; text-decoration: underline;">Cambridge English Exams</a>);</li>
+                        </ul>
+                        
+                        <p style="color: #c00000"><strong>Faça a matrícula já! 🌟🚀</strong></p>
+                        
+                        <p style="font-size: 1.2em; color: #c00000;"><u>Oferta válida somente até sábado ou enquanto durar as vagas. Exclusivo na unidade Campina Grande-PB.</u></p>
+                    </div>
+                </body>
+                </html>"""
 
     # corpo_email = f"""
     # <html>
