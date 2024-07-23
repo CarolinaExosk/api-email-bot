@@ -14,25 +14,52 @@ def enviar_email(mail, nome, image_path):
 
     # Corpo do e-mail em HTML com referência à imagem embutida
     corpo_email = f"""
-    <html>
-    <body>
-        <img src="cid:image1">
-    </body>
-    </html>
-    """
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #052664;">
+            <div style="">
+                <p>O melhor presente que você pode dar a sua criança é a oportunidade de aprender inglês desde cedo.</p>
+                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para vocês:</p>
+                
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><strong style="font-size: 1.2em; color: red;">Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong style="font-size: 1.2em; color: red;">20% de desconto na semestralidade:</strong> 6 parcelas de R$ 269,90</li>
+                    <li><strong style="font-size: 1.2em; color: red;">250,00 reais de bônus no material didático:</strong> 6 parcelas de R$ 90,98</li>
+                </ul>
+                
+                <h3 style="color: #c00000">Diferenciais que você só encontra aqui:</h3>
+                
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><strong> >> Professores altamente qualificados</strong> e especialistas em aulas para crianças;</li>
+                    <li><strong> >> Materiais didáticos internacionais</strong> das melhores editoras do mundo;</li>
+                    <li><strong> >></strong> Infraestrutura com <strong>tecnologia de ponta;</strong></li>
+                    <li><strong> >> Gameficação</strong> para incentivar atitudes positivas;</li>
+                    <li><strong> >> Quadros interativos</strong> com uso de internet, games, vídeos e muito mais;</li>
+                    <li><strong> >> Dupla certificação:</strong> Diploma brasileiro e Certificação Inglesa (<a href="https://culturainglesacg.com.br/certificacoes/" style="color: blue; text-decoration: underline;">Cambridge English Exams</a>);</li>
+                    <li><strong> >> Experiências</strong> gastronômicas e de <em>maker</em>.</li>
+                </ul>
+                
+                <p>Garanta agora o futuro brilhante de sua criança!</p>
+                
+                <p style="font-size: 1.2em; color: #c00000;"><strong>Faça a matrícula já! 🌟🚀</strong></p>
+                
+                <p>Oferta válida somente até sábado ou enquanto durar as vagas. Exclusivo na unidade Campina Grande-PB.</p>
+            </div>
+        </body>
+        </html>
+        """
+
+    # corpo_email = f"""
+    # <html>
+    # <body>
+    #     <img src="cid:image1">
+    # </body>
+    # </html>
+    # """
 
     msg.attach(MIMEText(corpo_email, 'html'))
 
     # Adiciona a imagem embutida
-    if image_path:
-        with open(image_path, 'rb') as img:
-            mime = MIMEBase('image', 'png', filename='image.png')
-            mime.add_header('Content-Disposition', 'inline', filename='image.png')
-            mime.add_header('Content-ID', '<image1>')
-            mime.add_header('X-Attachment-Id', 'image1')
-            mime.set_payload(img.read())
-            encoders.encode_base64(mime)
-            msg.attach(mime)
+    
 
     s = smtplib.SMTP('smtp.gmail.com: 587')
     s.starttls()
