@@ -42,6 +42,28 @@ def enviar_email(mail, nome, image_path):
 
 
             """
+            
+    elif image_path == "turbo":
+        corpo_email = f"""
+    <html>
+    <body>
+        <img src="cid:image1">
+    </body>
+    </html>
+    """
+
+    msg.attach(MIMEText(corpo_email, 'html'))
+
+    # Adiciona a imagem embutida
+    if image_path:
+        with open(image_path, 'rb') as img:
+            mime = MIMEBase('image', 'png', filename='turbo.png')
+            mime.add_header('Content-Disposition', 'inline', filename='turbo.jpeg')
+            mime.add_header('Content-ID', '<image1>')
+            mime.add_header('X-Attachment-Id', 'image1')
+            mime.set_payload(img.read())
+            encoders.encode_base64(mime)
+            msg.attach(mime)
     else:
         corpo_email = """
         <html>
@@ -73,14 +95,7 @@ def enviar_email(mail, nome, image_path):
 
                 """
 
-    # corpo_email = f"""
-    # <html>
-    # <body>
-    #     <img src="cid:image1">
-    # </body>
-    # </html>
-    # """
-
+    
     msg.attach(MIMEText(corpo_email, 'html'))
 
     # Adiciona a imagem embutida
