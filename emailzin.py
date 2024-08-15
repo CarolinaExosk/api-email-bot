@@ -57,7 +57,7 @@ def enviar_email(mail, nome, image_path):
     # Adiciona a imagem embutida
     if image_path:
         with open(image_path, 'rb') as img:
-            mime = MIMEBase('image', 'png', filename='turbo.png')
+            mime = MIMEBase('image', 'jpeg', filename='turbo.jpeg')
             mime.add_header('Content-Disposition', 'inline', filename='turbo.jpeg')
             mime.add_header('Content-ID', '<image1>')
             mime.add_header('X-Attachment-Id', 'image1')
