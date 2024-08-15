@@ -43,7 +43,7 @@ def enviar_email(mail, nome, image_path):
 
             """
             
-    elif image_path == "turbo":
+    elif image_path == "turbo.jpeg":
         corpo_email = f"""
     <html>
     <body>
