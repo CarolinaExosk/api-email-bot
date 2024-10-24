@@ -20,12 +20,12 @@ def enviar_email(mail, nome, image_path):
             <div>
                 <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
                 
-                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para você:</p>
+                <p>Pensando nisso, a <strong style="color: #c30e0e;">Cultura Inglesa</strong> preparou um <u><strong style="color: #000000;"><u>kit de oportunidades</u></strong></u> para você:</p>
         
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
-                    <li><strong style="color:#ff1f1f;"> >> Taxa de matrícula:</strong> GRÁTIS.</li>
-                    <li><strong style="color:#ff1f1f;"> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
-                    <li><strong style="color:#ff1f1f;"> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
+                    <li><strong style="color:#ff1f1f;">>> Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong style="color:#ff1f1f;">>> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
+                    <li><strong style="color:#ff1f1f;">>> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
                 </ul>
         
                 <p><strong style="color: #c30e0e;">Diferenciais que você só encontra aqui:</strong></p>
@@ -41,6 +41,7 @@ def enviar_email(mail, nome, image_path):
         </body>
         </html>
         """
+
     else:
         corpo_email = f"""
         <html>
@@ -48,12 +49,12 @@ def enviar_email(mail, nome, image_path):
             <div>
                 <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
                 
-                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para você:</p>
+                <p>Pensando nisso, a <strong style="color: #c30e0e;">Cultura Inglesa</strong> preparou um <u><strong style="color: #000000;"><u>kit de oportunidades</u></strong></u> para você:</p>
         
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
-                    <li><strong style="color:#ff1f1f;"> >> Taxa de matrícula:</strong> GRÁTIS.</li>
-                    <li><strong style="color:#ff1f1f;"> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
-                    <li><strong style="color:#ff1f1f;"> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
+                    <li><strong style="color:#ff1f1f;">>> Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong style="color:#ff1f1f;">>> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
+                    <li><strong style="color:#ff1f1f;">>> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
                 </ul>
         
                 <p><strong style="color: #c30e0e;">Diferenciais que você só encontra aqui:</strong></p>
