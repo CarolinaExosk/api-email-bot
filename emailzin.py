@@ -18,17 +18,17 @@ def enviar_email(mail, nome, image_path):
         <html>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
             <div>
-                <p>A <strong>CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
+                <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
                 
                 <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para você:</p>
         
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
-                    <li><strong> >> Taxa de matrícula:</strong> GRÁTIS.</li>
-                    <li><strong> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
-                    <li><strong> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
+                    <li><strong style="color:#ff1f1f;"> >> Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong style="color:#ff1f1f;"> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
+                    <li><strong style="color:#ff1f1f;"> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
                 </ul>
         
-                <p><strong>Diferenciais que você só encontra aqui:</strong></p>
+                <p><strong style="color: #c30e0e;">Diferenciais que você só encontra aqui:</strong></p>
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
                     <li> >> Professores altamente qualificados e especialistas em aulas para jovens e adultos;</li>
                     <li> >> Material didático internacional das melhores editoras do mundo;</li>
@@ -36,7 +36,7 @@ def enviar_email(mail, nome, image_path):
                     <li> >> Dupla certificação: Diploma brasileiro gratuito (Cultura Inglesa) ao final do curso e Certificação Internacional (Cambridge English Exams) opcional mediante pagamento de taxa de inscrição.</li>
                 </ul>
         
-                <p style="font-size: 1.2em;"><strong>Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
+                <p style="font-size: 1.2em;"><strong style="color: #c30e0e;">Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
             </div>
         </body>
         </html>
@@ -56,7 +56,7 @@ def enviar_email(mail, nome, image_path):
                     <li><strong> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
                 </ul>
         
-                <p><strong>Diferenciais que você só encontra aqui:</strong></p>
+                <p><strong style="color: #c30e0e;">Diferenciais que você só encontra aqui:</strong></p>
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
                     <li> >> Professores altamente qualificados e especialistas em aulas para jovens e adultos;</li>
                     <li> >> Material didático internacional das melhores editoras do mundo;</li>
@@ -73,15 +73,15 @@ def enviar_email(mail, nome, image_path):
     msg.attach(MIMEText(corpo_email, 'html'))
 
     # Adiciona a imagem embutida, se houver
-    if image_path:
-        with open(image_path, 'rb') as img:
-            mime = MIMEBase('image', 'jpeg', filename='turbo.jpeg')
-            mime.add_header('Content-Disposition', 'inline', filename='turbo.jpeg')
-            mime.add_header('Content-ID', '<image1>')
-            mime.add_header('X-Attachment-Id', 'image1')
-            mime.set_payload(img.read())
-            encoders.encode_base64(mime)
-            msg.attach(mime)
+    # if image_path:
+    #     with open(image_path, 'rb') as img:
+    #         # mime = MIMEBase('image', 'jpeg', filename='turbo.jpeg')
+    #         # mime.add_header('Content-Disposition', 'inline', filename='turbo.jpeg')
+    #         # mime.add_header('Content-ID', '<image1>')
+    #         # mime.add_header('X-Attachment-Id', 'image1')
+    #         mime.set_payload(img.read())
+    #         encoders.encode_base64(mime)
+    #         msg.attach(mime)
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
