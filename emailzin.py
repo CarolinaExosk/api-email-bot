@@ -15,39 +15,60 @@ def enviar_email(mail, nome, image_path):
     # Corpo do e-mail em HTML com referência à imagem embutida
     if image_path == "crianca":
         corpo_email = f"""
-           <html>
-           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
-               <div>
-                   <p>O melhor presente que você pode dar a sua criança é a oportunidade de aprender inglês desde cedo.</p>
-                   <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para vocês:</p>
-                   
-                   <h3 style="color: #c00000;"><u>INVESTIMENTO 1º ESTÁGIO</u></h3>
-                   
-                   <ul style="list-style-type: none; padding-left: 0; color: #000000;">
-                       <li><strong> >> Taxa de matrícula:</strong> GRÁTIS.</li>
-                       <li><strong> >> 🚀 6 parcelas de <span style="color: #c00000;">R$ 269,90</span> (semestralidade)</strong></li>
-                       <li><strong> >> 📚 6 parcelas de <span style="color: #c00000;">R$ 90,98</span> (material didático)</strong></li>
-                   </ul>
-                   
-                   <p>Pagamento total do 1º estágio em espécie ou facilitado em até 6 vezes nos cartões de crédito sem juros.</p>
-                   
-                   <p>Garanta agora o futuro brilhante de sua criança!</p>
-                   
-                   <p style="font-size: 1.2em;"><strong>Faça a matrícula já! 🌟🚀</strong></p>
-                   
-                   <p style="font-size: 1.2em;"><strong>Oferta válida somente até sábado ou enquanto durar as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
-               </div>
-           </body>
-           </html>
-            """
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
+            <div>
+                <p>A <strong>CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
+                
+                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para você:</p>
+        
+                <ul style="list-style-type: none; padding-left: 0; color: #000000;">
+                    <li><strong> >> Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
+                    <li><strong> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
+                </ul>
+        
+                <p><strong>Diferenciais que você só encontra aqui:</strong></p>
+                <ul style="list-style-type: none; padding-left: 0; color: #000000;">
+                    <li> >> Professores altamente qualificados e especialistas em aulas para jovens e adultos;</li>
+                    <li> >> Material didático internacional das melhores editoras do mundo;</li>
+                    <li> >> Infraestrutura com tecnologia de ponta (Quadros interativos, inteligência artificial e muito mais);</li>
+                    <li> >> Dupla certificação: Diploma brasileiro gratuito (Cultura Inglesa) ao final do curso e Certificação Internacional (Cambridge English Exams) opcional mediante pagamento de taxa de inscrição.</li>
+                </ul>
+        
+                <p style="font-size: 1.2em;"><strong>Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
+            </div>
+        </body>
+        </html>
+        """
     else:
         corpo_email = f"""
-           <html>
-           <body>
-               <img src="cid:image1">
-           </body>
-           </html>
-           """
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
+            <div>
+                <p>A <strong>CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
+                
+                <p>Pensando nisso, a <strong>Cultura Inglesa</strong> preparou um <u><strong>kit de oportunidades</strong></u> para você:</p>
+        
+                <ul style="list-style-type: none; padding-left: 0; color: #000000;">
+                    <li><strong> >> Taxa de matrícula:</strong> GRÁTIS.</li>
+                    <li><strong> >> 30% de desconto na semestralidade:</strong> 6 parcelas de R$ 279,90 nos cartões de crédito sem juros.</li>
+                    <li><strong> >> 250,00 reais de bônus no material didático:</strong> R$ 519,00 à vista.</li>
+                </ul>
+        
+                <p><strong>Diferenciais que você só encontra aqui:</strong></p>
+                <ul style="list-style-type: none; padding-left: 0; color: #000000;">
+                    <li> >> Professores altamente qualificados e especialistas em aulas para jovens e adultos;</li>
+                    <li> >> Material didático internacional das melhores editoras do mundo;</li>
+                    <li> >> Infraestrutura com tecnologia de ponta (Quadros interativos, inteligência artificial e muito mais);</li>
+                    <li> >> Dupla certificação: Diploma brasileiro gratuito (Cultura Inglesa) ao final do curso e Certificação Internacional (Cambridge English Exams) opcional mediante pagamento de taxa de inscrição.</li>
+                </ul>
+        
+                <p style="font-size: 1.2em;"><strong>Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
+            </div>
+        </body>
+        </html>
+        """
 
     msg.attach(MIMEText(corpo_email, 'html'))
 
