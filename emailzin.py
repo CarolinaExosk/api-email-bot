@@ -20,7 +20,7 @@ def enviar_email(mail, nome, image_path):
             <div>
                 <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934. Há 90 anos com cursos próprios, desenvolvidos pelo nosso departamento acadêmico da Faculdade Cultura Inglesa, com conteúdos constantemente atualizados, aulas dinâmicas e interativas, que transformam a sala de aula em um espaço de intercâmbio cultural.</p>
                 
-                <p>Pensando nisso, a <strong style="color: #c30e0e;">Cultura Inglesa</strong> preparou um <u><strong style="color: #000000;"><u>kit de oportunidades</u></strong></u> para você:</p>
+                <p>Pensando nisso, a <strong >Cultura Inglesa</strong> preparou um <u><strong style="color: #000000;"><u>kit de oportunidades</u></strong></u> para você:</p>
         
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
                     <li><strong style="color:#ff1f1f;">>> Taxa de matrícula:</strong> GRÁTIS.</li>
@@ -30,10 +30,10 @@ def enviar_email(mail, nome, image_path):
         
                 <p><strong style="color: #c30e0e;">Diferenciais que você só encontra aqui:</strong></p>
                 <ul style="list-style-type: none; padding-left: 0; color: #000000;">
-                    <li> >> Professores altamente qualificados e especialistas em aulas para jovens e adultos;</li>
-                    <li> >> Material didático internacional das melhores editoras do mundo;</li>
-                    <li> >> Infraestrutura com tecnologia de ponta (Quadros interativos, inteligência artificial e muito mais);</li>
-                    <li> >> Dupla certificação: Diploma brasileiro gratuito (Cultura Inglesa) ao final do curso e Certificação Internacional (Cambridge English Exams) opcional mediante pagamento de taxa de inscrição.</li>
+                    <li> >> <strong> Professores altamente qualificados</strong>e especialistas em aulas para jovens e adultos;</li>
+                    <li> >> <strong> Material didático internacional</strong> das melhores editoras do mundo;</li>
+                    <li> >> <strong> Infraestrutura</strong> com <strong> tecnologia de ponta</strong> (Quadros interativos, inteligência artificial e muito mais);</li>
+                    <li> >> <strong> Dupla certificação:</strong>  Diploma brasileiro gratuito (Cultura Inglesa) ao final do curso e Certificação Internacional (Cambridge English Exams) opcional mediante pagamento de taxa de inscrição.</li>
                 </ul>
         
                 <p style="font-size: 1.2em;"><strong style="color: #c30e0e;">Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
