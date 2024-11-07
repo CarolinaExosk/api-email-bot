@@ -24,8 +24,10 @@ def enviar_email(mail, nome, image_path):
 
     # Map for image paths based on 'image_path' argument
     image_files = {
-        "crianca": "crianca.jpeg",
+        "crianca1": "crianca1.jpeg",
+        "crianca2": "crianca2.jpeg",
         "adulto": "adulto.jpeg"
+        
     }
 
     # Attach the image inline if 'image_path' exists in the dictionary
