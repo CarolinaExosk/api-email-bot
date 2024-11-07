@@ -12,8 +12,13 @@ def enviar_email(mail, nome, image_path):
     msg['To'] = mail
     password = 'cjin nkol lbfo ybgp'
 
-    # Corpo do e-mail em HTML com referência à imagem embutida
-    corpo_email = f"""
+    # Corpo do e-mail em HTML com apenas a imagem
+    corpo_email = """
+    <html>
+    <body>
+        <img src="cid:image1" alt="Imagem" style="width:100%; max-width:600px;">
+    </body>
+    </html>
     """
     msg.attach(MIMEText(corpo_email, 'html'))
 
@@ -23,7 +28,7 @@ def enviar_email(mail, nome, image_path):
         "adulto": "adulto.jpeg"
     }
 
-    # Attach the image if 'image_path' exists in the dictionary
+    # Attach the image inline if 'image_path' exists in the dictionary
     if image_path in image_files:
         with open(image_files[image_path], 'rb') as img:
             mime = MIMEBase('image', 'jpeg', filename=image_files[image_path])
