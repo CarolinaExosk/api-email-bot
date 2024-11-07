@@ -7,7 +7,7 @@ from flask import Flask, jsonify, request
 
 def enviar_email(mail, nome, image_path):
     msg = MIMEMultipart('related')
-    msg['Subject'] = "Uma oferta especial para você investir no seu inglês."
+    msg['Subject'] = "O maior presente🎁 que você pode se dar."
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
     password = 'cjin nkol lbfo ybgp'
