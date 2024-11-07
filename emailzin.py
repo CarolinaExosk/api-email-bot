@@ -13,17 +13,17 @@ def enviar_email(mail, nome, image_path):
     password = 'cjin nkol lbfo ybgp'
 
     # Corpo do e-mail em HTML com referência à imagem embutida
-    # corpo_email = f"""
-    # <html>
-    # <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
-    #     <div>
-    #         <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934...</p>
-    #         <!-- Rest of the HTML content -->
-    #         <p style="font-size: 1.2em;"><strong style="color: #c30e0e;">Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
-    #     </div>
-    # </body>
-    # </html>
-    # """
+    corpo_email = f"""
+    <html>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #000000;">
+        <div>
+            <p>A <strong style="color: #c30e0e;">CULTURA INGLESA</strong> é referência no ensino de qualidade desde 1934...</p>
+            <!-- Rest of the HTML content -->
+            <p style="font-size: 1.2em;"><strong style="color: #c30e0e;">Oferta válida somente até sábado ou enquanto durarem as vagas. Exclusivo na unidade Campina Grande-PB.</strong></p>
+        </div>
+    </body>
+    </html>
+    """
     msg.attach(MIMEText(corpo_email, 'html'))
 
     # Map for image paths based on 'image_path' argument
