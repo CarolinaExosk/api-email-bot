@@ -133,7 +133,7 @@ def enviar_email(mail, nome, image_path):
             
             """
             
-        else:
+        elif image_path=="promo14plus":
             corpo_email="""
                 <!DOCTYPE html>
                 <html lang="pt-BR">
