@@ -77,8 +77,8 @@ def enviar_email(mail, nome, image_path):
 
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">790,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">100,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                        <li>☑️ R$ <span class="highlight">790,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">100,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
 
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
@@ -121,8 +121,8 @@ def enviar_email(mail, nome, image_path):
 
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">820,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">240,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                        <li>☑️ R$ <span class="highlight">820,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">240,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
 
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
@@ -148,7 +148,7 @@ def enviar_email(mail, nome, image_path):
                         }
                         .highlight {
                             font-weight: bold;
-                            color: #ff0000; /* Adjust color if needed */
+                            color: #000000; /* Adjust color if needed */
                         }
                         .emphasis {
                             font-style: italic;
@@ -164,8 +164,8 @@ def enviar_email(mail, nome, image_path):
 
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">890,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">220,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                        <li>☑️ R$ <span class="highlight">890,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">220,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
 
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
