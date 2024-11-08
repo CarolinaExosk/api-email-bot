@@ -17,34 +17,165 @@ def enviar_email(mail, nome, image_path):
     password = 'cjin nkol lbfo ybgp'
 
     # Corpo do e-mail em HTML com apenas a imagem
-    corpo_email = """
-    <html>
-    <body>
-        <img src="cid:image1" alt="Imagem" style="width:100%; max-width:600px;">
-    </body>
-    </html>
-    """
-    msg.attach(MIMEText(corpo_email, 'html'))
+    if image_path.lower() == "crianca1" or image_path.lower() == "crianca2" or image_path.lower() == "adulto":
+        corpo_email = """
+        <html>
+        <body>
+            <img src="cid:image1" alt="Imagem" style="width:100%; max-width:600px;">
+        </body>
+        </html>
+        """
+        msg.attach(MIMEText(corpo_email, 'html'))
 
-    # Map for image paths based on 'image_path' argument
-    image_files = {
-        "crianca1": "crianca1.jpeg",
-        "crianca2": "crianca2.jpeg",
-        "adulto": "adulto.jpeg"
-        
-    }
+        # Map for image paths based on 'image_path' argument
+        image_files = {
+            "crianca1": "crianca1.jpeg",
+            "crianca2": "crianca2.jpeg",
+            "adulto": "adulto.jpeg"
+            
+        }
 
-    # Attach the image inline if 'image_path' exists in the dictionary
-    if image_path in image_files:
-        with open(image_files[image_path], 'rb') as img:
-            mime = MIMEBase('image', 'jpeg', filename=image_files[image_path])
-            mime.add_header('Content-Disposition', 'inline', filename=image_files[image_path])
-            mime.add_header('Content-ID', '<image1>')
-            mime.add_header('X-Attachment-Id', 'image1')
-            mime.set_payload(img.read())
-            encoders.encode_base64(mime)
-            msg.attach(mime)
+        # Attach the image inline if 'image_path' exists in the dictionary
+        if image_path in image_files:
+            with open(image_files[image_path], 'rb') as img:
+                mime = MIMEBase('image', 'jpeg', filename=image_files[image_path])
+                mime.add_header('Content-Disposition', 'inline', filename=image_files[image_path])
+                mime.add_header('Content-ID', '<image1>')
+                mime.add_header('X-Attachment-Id', 'image1')
+                mime.set_payload(img.read())
+                encoders.encode_base64(mime)
+                msg.attach(mime)
+    else:
+        if image_path.lower()=="promo49":
+            corpo_email="""
+                <!DOCTYPE html>
+                <html lang="pt-BR">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Promoção de Matrícula</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                        }
+                        .highlight {
+                            font-weight: bold;
+                            color: #ff0000; /* Adjust color if needed */
+                        }
+                        .emphasis {
+                            font-style: italic;
+                        }
+                        .limited-offer {
+                            font-weight: bold;
+                            color: #000;
+                            font-size: 1.2em;
+                        }
+                    </style>
+                </head>
+                <body>
 
+                    <ul>
+                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
+                        <li>☑️ R$ <span class="highlight">790,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">100,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                    </ul>
+
+                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
+
+                </body>
+                </html>
+            
+            
+            
+            """
+            
+        elif image_path.lower()=="promo1013":
+            corpo_email="""
+                <!DOCTYPE html>
+                <html lang="pt-BR">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Promoção de Matrícula</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                        }
+                        .highlight {
+                            font-weight: bold;
+                            color: #ff0000; /* Adjust color if needed */
+                        }
+                        .emphasis {
+                            font-style: italic;
+                        }
+                        .limited-offer {
+                            font-weight: bold;
+                            color: #000;
+                            font-size: 1.2em;
+                        }
+                    </style>
+                </head>
+                <body>
+
+                    <ul>
+                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
+                        <li>☑️ R$ <span class="highlight">820,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">240,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                    </ul>
+
+                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
+
+                </body>
+                </html>            
+            
+            
+            """
+            
+        else:
+            corpo_email="""
+                <!DOCTYPE html>
+                <html lang="pt-BR">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Promoção de Matrícula</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                        }
+                        .highlight {
+                            font-weight: bold;
+                            color: #ff0000; /* Adjust color if needed */
+                        }
+                        .emphasis {
+                            font-style: italic;
+                        }
+                        .limited-offer {
+                            font-weight: bold;
+                            color: #000;
+                            font-size: 1.2em;
+                        }
+                    </style>
+                </head>
+                <body>
+
+                    <ul>
+                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
+                        <li>☑️ R$ <span class="highlight">890,00</span> de <span class="highlight emphasis">desconto</span> na <span class="emphasis">semestralidade</span>;</li>
+                        <li>☑️ R$ <span class="highlight">220,00</span> de <span class="highlight emphasis">desconto</span> no <span class="emphasis">material didático</span>.</li>
+                    </ul>
+
+                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
+
+                </body>
+                </html>
+            
+            """
+        msg.attach(MIMEText(corpo_email, 'html'))
+            
     # Sending email
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
