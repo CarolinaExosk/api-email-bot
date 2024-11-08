@@ -11,7 +11,7 @@ def enviar_email(mail, nome, image_path):
     if image_path.lower() == "crianca1" or image_path.lower() == "crianca2":
         msg['Subject'] = "O maior presente🎁 que você pode dar ao seu filho."
         
-    elif "promo" == image_path.lower():
+    elif "promo" in image_path.lower():
         msg['Subject'] = "Oferta relâmpago!⚡️"
         
     else:
