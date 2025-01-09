@@ -7,21 +7,23 @@ from flask import Flask, jsonify, request
 
 def enviar_email(mail, nome, image_path):
     msg = MIMEMultipart('related')
-    # Define the subject based on the image_path
-    if image_path.lower() == "crianca1" or image_path.lower() == "crianca2":
+    
+    # Define o assunto baseado no image_path
+    if image_path.lower() == "crianca":
         msg['Subject'] = "O maior presente🎁 que você pode dar ao seu filho."
-        
+    elif image_path.lower() == "adulto":
+        msg['Subject'] = "O maior presente🎁 que você pode se dar."
     elif "promo" in image_path.lower():
         msg['Subject'] = "Oferta relâmpago!⚡️"
-        
     else:
         msg['Subject'] = "O maior presente🎁 que você pode se dar."
+        
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
-    password = 'cjin nkol lbfo ybgp'
+    password = 'cjin nkol lbfo ybgp'  # substitua pela sua senha de aplicativo/conta
 
-    # Corpo do e-mail em HTML com apenas a imagem
-    if image_path.lower() == "crianca1" or image_path.lower() == "crianca2" or image_path.lower() == "adulto":
+    # Se for "crianca" ou "adulto", enviará apenas a imagem correspondente
+    if image_path.lower() == "crianca" or image_path.lower() == "adulto":
         corpo_email = """
         <html>
         <body>
@@ -31,27 +33,26 @@ def enviar_email(mail, nome, image_path):
         """
         msg.attach(MIMEText(corpo_email, 'html'))
 
-        # Map for image paths based on 'image_path' argument
+        # Escolhe o arquivo certo com base na string
         image_files = {
-            "crianca1": "crianca1.jpeg",
-            "crianca2": "crianca2.jpeg",
-            "adulto": "adulto.jpeg"
-            
+            "crianca": "crianca.png",
+            "adulto": "adulto.png"
         }
 
-        # Attach the image inline if 'image_path' exists in the dictionary
-        if image_path in image_files:
-            with open(image_files[image_path], 'rb') as img:
-                mime = MIMEBase('image', 'jpeg', filename=image_files[image_path])
-                mime.add_header('Content-Disposition', 'inline', filename=image_files[image_path])
+        if image_path.lower() in image_files:
+            with open(image_files[image_path.lower()], 'rb') as img:
+                mime = MIMEBase('image', 'png', filename=image_files[image_path.lower()])
+                mime.add_header('Content-Disposition', 'inline', filename=image_files[image_path.lower()])
                 mime.add_header('Content-ID', '<image1>')
                 mime.add_header('X-Attachment-Id', 'image1')
                 mime.set_payload(img.read())
                 encoders.encode_base64(mime)
                 msg.attach(mime)
+    
+    # Se for "promo...", aqui segue o mesmo fluxo de ofertas em HTML:
     else:
         if image_path.lower()=="promo49":
-            corpo_email="""
+            corpo_email = """
                 <!DOCTYPE html>
                 <html lang="pt-BR">
                 <head>
@@ -65,7 +66,7 @@ def enviar_email(mail, nome, image_path):
                         }
                         .highlight {
                             font-weight: bold;
-                            color: #ff0000; /* Adjust color if needed */
+                            color: #ff0000;
                         }
                         .emphasis {
                             font-style: italic;
@@ -78,24 +79,17 @@ def enviar_email(mail, nome, image_path):
                     </style>
                 </head>
                 <body>
-
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
                         <li>☑️ R$ <span class="highlight">790,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
                         <li>☑️ R$ <span class="highlight">100,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
-
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-
                 </body>
                 </html>
-            
-            
-            
             """
-            
         elif image_path.lower()=="promo1013":
-            corpo_email="""
+            corpo_email = """
                 <!DOCTYPE html>
                 <html lang="pt-BR">
                 <head>
@@ -109,7 +103,7 @@ def enviar_email(mail, nome, image_path):
                         }
                         .highlight {
                             font-weight: bold;
-                            color: #ff0000; /* Adjust color if needed */
+                            color: #ff0000;
                         }
                         .emphasis {
                             font-style: italic;
@@ -122,23 +116,17 @@ def enviar_email(mail, nome, image_path):
                     </style>
                 </head>
                 <body>
-
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
                         <li>☑️ R$ <span class="highlight">820,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
                         <li>☑️ R$ <span class="highlight">240,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
-
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-
                 </body>
-                </html>            
-            
-            
+                </html>
             """
-            
-        elif image_path=="promo14plus":
-            corpo_email="""
+        elif image_path.lower()=="promo14plus":
+            corpo_email = """
                 <!DOCTYPE html>
                 <html lang="pt-BR">
                 <head>
@@ -152,7 +140,7 @@ def enviar_email(mail, nome, image_path):
                         }
                         .highlight {
                             font-weight: bold;
-                            color: #000000; /* Adjust color if needed */
+                            color: #000000;
                         }
                         .emphasis {
                             font-style: italic;
@@ -165,22 +153,23 @@ def enviar_email(mail, nome, image_path):
                     </style>
                 </head>
                 <body>
-
                     <ul>
                         <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
                         <li>☑️ R$ <span class="highlight">890,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
                         <li>☑️ R$ <span class="highlight">220,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
                     </ul>
-
                     <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-
                 </body>
                 </html>
-            
             """
+        else:
+            # Caso não seja nenhum "promo", pode enviar uma mensagem genérica ou vazia
+            corpo_email = "Não há conteúdo definido para este tipo de image_path."
+        
+        # Adiciona o corpo do email em HTML
         msg.attach(MIMEText(corpo_email, 'html'))
-            
-    # Sending email
+    
+    # Envio do e-mail
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login(msg['From'].split('<')[1][:-1], password)
