@@ -5,9 +5,9 @@ url = "http://localhost:5001/sentmail"
 
 # Dados da requisição
 data = {
-    "email": "gustavoataide.trabalho@gmail.com",
-    "nome": "gustavito",
-    "image_path": "imagem_crianca.png"  # Atualize o caminho para a imagem correta
+    "email": "carolina.exosk@gmail.com",
+    "nome": "carolina",
+    "image_path": "crianca"  # Atualize o caminho para a imagem correta
 }
 
 # Enviando a requisição POST
