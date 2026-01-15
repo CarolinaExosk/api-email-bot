@@ -16,7 +16,7 @@ def enviar_email(mail, nome, image_path):
     elif "promo" in image_path.lower():
         msg['Subject'] = "Oferta relâmpago!⚡️"
     else:
-        msg['Subject'] = "Um presente para toda a vida🎁"
+        msg['Subject'] = "Um presente para toda a vida 🎁"
         
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
