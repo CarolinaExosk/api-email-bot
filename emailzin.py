@@ -10,13 +10,13 @@ def enviar_email(mail, nome, image_path):
     
     # Define o assunto baseado no image_path
     if image_path.lower() == "crianca":
-        msg['Subject'] = "O maior presente🎁 que você pode dar ao seu filho."
+        msg['Subject'] = "Um presente para toda a vida 🎁"
     elif image_path.lower() == "adulto":
         msg['Subject'] = "O maior presente🎁 que você pode se dar."
     elif "promo" in image_path.lower():
         msg['Subject'] = "Oferta relâmpago!⚡️"
     else:
-        msg['Subject'] = "O maior presente🎁 que você pode se dar."
+        msg['Subject'] = "Um presente para toda a vida🎁"
         
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
