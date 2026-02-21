@@ -1,200 +1,88 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 from flask import Flask, jsonify, request
 
-def enviar_email(mail, nome, image_path):
-    msg = MIMEMultipart('related')
+def enviar_email(mail, nome, tipo_proposta):
+    msg = MIMEMultipart('alternative')
     
-    # Define o assunto baseado no image_path
-    if image_path.lower() == "crianca":
-        msg['Subject'] = "Um presente para toda a vida 🎁"
-    elif image_path.lower() == "adulto":
-        msg['Subject'] = "O maior presente🎁 que você pode se dar."
-    elif "promo" in image_path.lower():
-        msg['Subject'] = "Oferta relâmpago!⚡️"
-    else:
-        msg['Subject'] = "Um presente para toda a vida 🎁"
-        
+    # 1. Configurações Básicas do E-mail
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
-    password = 'cjin nkol lbfo ybgp'  # substitua pela sua senha de aplicativo/conta
-
-    # Se for "crianca" ou "adulto", enviará apenas a imagem correspondente
-    if image_path.lower() == "crianca" or image_path.lower() == "adulto":
-        corpo_email = """
+    password = 'cjin nkol lbfo ybgp'  # senha de aplicativo do Gmail
+    
+    # 2. Lógica para escolher o Texto
+    tipo = tipo_proposta.lower()
+    
+    if tipo == "crianca" or tipo == "adulto":
+        # Texto padrão de investimento
+        msg['Subject'] = "Sua Proposta de Investimento 🎁"
+        
+        corpo_email_html = f"""
         <html>
+        <head>
+            <style>
+                body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                h3 {{ color: #003366; }}
+                .destaque {{ font-weight: bold; color: #cc0000; }}
+            </style>
+        </head>
         <body>
-            <img src="cid:image1" alt="Imagem" style="width:100%; max-width:600px;">
+            <p>Olá, {nome}!</p>
+            <p>Segue abaixo a sua proposta:</p>
+            
+            <h3>Investimento 1º estágio – Contrato Semestral</h3>
+            
+            <p><strong>Semestralidade</strong><br>
+            6 parcelas iguais de R$ 459,84 (Boleto bancário)</p>
+            
+            <p><strong>Material didático</strong><br>
+            6 parcelas iguais de R$ 106,66 nos cartões de crédito</p>
+            
+            <p class="destaque">Válido somente para a unidade Campina Grande-PB</p>
+            
+            <p>Qualquer dúvida, estamos à disposição!</p>
         </body>
         </html>
         """
-        msg.attach(MIMEText(corpo_email, 'html'))
-
-        # Escolhe o arquivo certo com base na string
-        image_files = {
-            "crianca": "crianca.png",
-            "adulto": "adulto.png"
-        }
-
-        if image_path.lower() in image_files:
-            with open(image_files[image_path.lower()], 'rb') as img:
-                mime = MIMEBase('image', 'png', filename=image_files[image_path.lower()])
-                mime.add_header('Content-Disposition', 'inline', filename=image_files[image_path.lower()])
-                mime.add_header('Content-ID', '<image1>')
-                mime.add_header('X-Attachment-Id', 'image1')
-                mime.set_payload(img.read())
-                encoders.encode_base64(mime)
-                msg.attach(mime)
-    
-    # Se for "promo...", aqui segue o mesmo fluxo de ofertas em HTML:
-    else:
-        if image_path.lower()=="promo49":
-            corpo_email = """
-                <!DOCTYPE html>
-                <html lang="pt-BR">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Promoção de Matrícula</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            line-height: 1.6;
-                        }
-                        .highlight {
-                            font-weight: bold;
-                            color: #ff0000;
-                        }
-                        .emphasis {
-                            font-style: italic;
-                        }
-                        .limited-offer {
-                            font-weight: bold;
-                            color: #000;
-                            font-size: 1.2em;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <ul>
-                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">790,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">100,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
-                    </ul>
-                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-                </body>
-                </html>
-            """
-        elif image_path.lower()=="promo1013":
-            corpo_email = """
-                <!DOCTYPE html>
-                <html lang="pt-BR">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Promoção de Matrícula</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            line-height: 1.6;
-                        }
-                        .highlight {
-                            font-weight: bold;
-                            color: #ff0000;
-                        }
-                        .emphasis {
-                            font-style: italic;
-                        }
-                        .limited-offer {
-                            font-weight: bold;
-                            color: #000;
-                            font-size: 1.2em;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <ul>
-                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">820,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">240,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
-                    </ul>
-                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-                </body>
-                </html>
-            """
-        elif image_path.lower()=="promo14plus":
-            corpo_email = """
-                <!DOCTYPE html>
-                <html lang="pt-BR">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Promoção de Matrícula</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            line-height: 1.6;
-                        }
-                        .highlight {
-                            font-weight: bold;
-                            color: #000000;
-                        }
-                        .emphasis {
-                            font-style: italic;
-                        }
-                        .limited-offer {
-                            font-weight: bold;
-                            color: #000;
-                            font-size: 1.2em;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <ul>
-                        <li>☑️ Taxa de matrícula <span class="highlight emphasis">GRÁTIS</span>;</li>
-                        <li>☑️ R$ <span class="highlight">890,00</span> de <span class="highlight emphasis">desconto</span> na <span class="highlight emphasis">semestralidade</span>;</li>
-                        <li>☑️ R$ <span class="highlight">220,00</span> de <span class="highlight emphasis">desconto</span> no <span class="highlight emphasis">material didático</span>.</li>
-                    </ul>
-                    <p class="limited-offer">*SOMENTE ATÉ AMANHÃ!!!* 🏃🏃</p>
-                </body>
-                </html>
-            """
-        else:
-            # Caso não seja nenhum "promo", pode enviar uma mensagem genérica ou vazia
-            corpo_email = "Não há conteúdo definido para este tipo de image_path."
         
-        # Adiciona o corpo do email em HTML
-        msg.attach(MIMEText(corpo_email, 'html'))
-    
-    # Envio do e-mail
+    else:
+        # Se mandar algo diferente de crianca ou adulto
+        msg['Subject'] = "Informações sobre os cursos"
+        corpo_email_html = f"<p>Olá, {nome}! Em breve entraremos em contato com mais informações.</p>"
+
+    # 3. Anexa o texto HTML ao e-mail
+    msg.attach(MIMEText(corpo_email_html, 'html'))
+
+    # 4. Envio
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login(msg['From'].split('<')[1][:-1], password)
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
-    print('Email enviado')
+    print('Email enviado com sucesso!')
+
+# --- Configuração do Servidor Flask ---
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Olá, Mundo!"
-
-@app.route('/endpoint1', methods=['GET'])
-def endpoint1():
-    return jsonify({"mensagem": "Você bateu no endpoint1!"})
+    return "Servidor de E-mail da Cultura Inglesa Online!"
 
 @app.route('/sentmail', methods=['POST'])
 def sentmail():
     data = request.json
     email = data.get('email')
     nome = data.get('nome')
-    image_path = data.get('image_path')  # Caminho da imagem fornecido na requisição
-    enviar_email(mail=email, nome=nome, image_path=image_path)
-    return jsonify({"mensagem": "Você bateu no endpoint2!"})
+    tipo_proposta = data.get('image_path', 'default') 
+    
+    try:
+        enviar_email(mail=email, nome=nome, tipo_proposta=tipo_proposta)
+        return jsonify({"status": "sucesso", "mensagem": "E-mail enviado!"}), 200
+    except Exception as e:
+        print(f"Erro ao enviar email: {e}")
+        return jsonify({"status": "erro", "mensagem": "Falha no envio."}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
