@@ -4,9 +4,10 @@ from email.mime.text import MIMEText
 from flask import Flask, jsonify, request
 
 def enviar_email(mail, nome, tipo_proposta):
+    # 'alternative' indica que vamos enviar duas versões: texto e HTML
     msg = MIMEMultipart('alternative')
     
-    # 1. Config email
+    # 1. Configurações Básicas do E-mail
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
     password = 'cjin nkol lbfo ybgp'  # senha de aplicativo do Gmail
@@ -17,7 +18,15 @@ def enviar_email(mail, nome, tipo_proposta):
     if tipo == "crianca" or tipo == "adulto":
         msg['Subject'] = "Sua Proposta de Investimento Cultura Inglesa 🎁"
         
-        # HTML atualizado com a imagem hospedada no Vercel
+        # NOVA PARTE: Versão em texto simples para agradar aos filtros do Hotmail
+        corpo_email_texto = f"""Olá, {nome}!
+        
+Pode visualizar a proposta por este link: 
+https://api-email-bot-seven.vercel.app/mailing-06.png
+
+Qualquer dúvida, estamos à disposição!"""
+
+        # Versão em HTML (a que a maioria das pessoas vai ver)
         corpo_email_html = f"""
         <!DOCTYPE html>
         <html lang="pt-BR">
@@ -43,16 +52,18 @@ def enviar_email(mail, nome, tipo_proposta):
         
     else:
         msg['Subject'] = "Informações sobre os cursos"
+        corpo_email_texto = f"Olá, {nome}! Em breve entraremos em contato com mais informações."
         corpo_email_html = f"<p>Olá, {nome}! Em breve entraremos em contato com mais informações.</p>"
 
-    # 3. Anexa o texto HTML ao e-mail
+    # 3. Anexa as duas versões ao e-mail
+    # A ordem é IMPORTANTE: primeiro o texto simples, depois o HTML.
+    msg.attach(MIMEText(corpo_email_texto, 'plain'))
     msg.attach(MIMEText(corpo_email_html, 'html'))
 
     # 4. Envio
     try:
         s = smtplib.SMTP('smtp.gmail.com', 587)
         s.starttls()
-        # Extraindo o email limpo do remetente para o login
         remetente_limpo = msg['From'].split('<')[1][:-1]
         s.login(remetente_limpo, password)
         s.sendmail(remetente_limpo, msg['To'], msg.as_string())
@@ -60,7 +71,7 @@ def enviar_email(mail, nome, tipo_proposta):
         print('Email enviado com sucesso!')
     except Exception as e:
         print(f"Erro no SMTP: {e}")
-        raise e # Repassa o erro para o Flask capturar
+        raise e
 
 # --- Configuração do Servidor Flask ---
 
