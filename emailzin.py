@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 def enviar_email(mail, nome, tipo_proposta):
     msg = MIMEMultipart('alternative')
     
-    # 1. Configurações Básicas do E-mail
+    # 1. Config email
     msg['From'] = 'Cultura Inglesa <comercialculturainglesacg@gmail.com>'
     msg['To'] = mail
     password = 'cjin nkol lbfo ybgp'  # senha de aplicativo do Gmail
@@ -15,39 +15,33 @@ def enviar_email(mail, nome, tipo_proposta):
     tipo = tipo_proposta.lower()
     
     if tipo == "crianca" or tipo == "adulto":
-        # Texto padrão de investimento
-        msg['Subject'] = "Sua Proposta de Investimento 🎁"
+        msg['Subject'] = "Sua Proposta de Investimento Cultura Inglesa 🎁"
         
+        # HTML atualizado com a imagem hospedada no Vercel
         corpo_email_html = f"""
-        <html>
+        <!DOCTYPE html>
+        <html lang="pt-BR">
         <head>
-            <style>
-                body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
-                h3 {{ color: #003366; }}
-                .destaque {{ font-weight: bold; color: #cc0000; }}
-            </style>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
-        <body>
+        <body style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; margin: 0; padding: 20px;">
+        
             <p>Olá, {nome}!</p>
-            <p>Segue abaixo a sua proposta:</p>
             
-            <h3>Investimento 1º estágio – Contrato Semestral</h3>
+            <p>Segue abaixo a sua proposta de investimento:</p>
             
-            <p><strong>Semestralidade</strong><br>
-            6 parcelas iguais de R$ 459,84 (Boleto bancário)</p>
-            
-            <p><strong>Material didático</strong><br>
-            6 parcelas iguais de R$ 106,66 nos cartões de crédito</p>
-            
-            <p class="destaque">Válido somente para a unidade Campina Grande-PB</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="https://api-email-bot-seven.vercel.app/mailing-06.png" alt="Proposta de Investimento Cultura Inglesa" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+            </div>
             
             <p>Qualquer dúvida, estamos à disposição!</p>
+        
         </body>
         </html>
         """
         
     else:
-        # Se mandar algo diferente de crianca ou adulto
         msg['Subject'] = "Informações sobre os cursos"
         corpo_email_html = f"<p>Olá, {nome}! Em breve entraremos em contato com mais informações.</p>"
 
@@ -55,12 +49,18 @@ def enviar_email(mail, nome, tipo_proposta):
     msg.attach(MIMEText(corpo_email_html, 'html'))
 
     # 4. Envio
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.starttls()
-    s.login(msg['From'].split('<')[1][:-1], password)
-    s.sendmail(msg['From'], msg['To'], msg.as_string())
-    s.quit()
-    print('Email enviado com sucesso!')
+    try:
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        # Extraindo o email limpo do remetente para o login
+        remetente_limpo = msg['From'].split('<')[1][:-1]
+        s.login(remetente_limpo, password)
+        s.sendmail(remetente_limpo, msg['To'], msg.as_string())
+        s.quit()
+        print('Email enviado com sucesso!')
+    except Exception as e:
+        print(f"Erro no SMTP: {e}")
+        raise e # Repassa o erro para o Flask capturar
 
 # --- Configuração do Servidor Flask ---
 
