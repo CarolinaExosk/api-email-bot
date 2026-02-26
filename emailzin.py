@@ -41,7 +41,7 @@ Qualquer dúvida, estamos à disposição!"""
             <p>Segue abaixo a sua proposta de investimento:</p>
             
             <div style="text-align: center; margin: 30px 0;">
-                <img src="https://api-email-bot-seven.vercel.app/mailing-06.png" alt="Proposta de Investimento Cultura Inglesa" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+                <img src="https://github.com/CarolinaExosk/api-email-bot/blob/main/public/mailing-06.png?raw=true" alt="Proposta de Investimento Cultura Inglesa" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
             </div>
             
             <p>Qualquer dúvida, estamos à disposição!</p>
