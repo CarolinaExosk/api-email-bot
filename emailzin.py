@@ -18,15 +18,26 @@ def enviar_email(mail, nome, tipo_proposta):
     if tipo == "crianca" or tipo == "adulto":
         msg['Subject'] = "Sua Proposta de Investimento Cultura Inglesa 🎁"
         
-        # NOVA PARTE: Versão em texto simples para agradar aos filtros do Hotmail
+        # Versão em texto simples atualizada com a nova proposta
         corpo_email_texto = f"""Olá, {nome}!
         
-Pode visualizar a proposta por este link: 
-https://api-email-bot-seven.vercel.app/mailing-06.png
+Segue abaixo a sua proposta:
+Investimento 1º estágio – Contrato Semestral
+
+Semestralidade com 30% OFF
+6 parcelas iguais de R$ 389,90 (Boleto bancário)
+
+Material didático com bônus de R$ 250,00
+Por apenas R$ 498,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.
+
+Válido somente para a unidade Campina Grande-PB
 
 Qualquer dúvida, estamos à disposição!"""
 
-        # Versão em HTML (a que a maioria das pessoas vai ver)
+        # Pode visualizar a proposta por este link: 
+        # https://api-email-bot-seven.vercel.app/mailing-06.png
+
+        # Versão em HTML atualizada com o texto do chefe
         corpo_email_html = f"""
         <!DOCTYPE html>
         <html lang="pt-BR">
@@ -38,11 +49,17 @@ Qualquer dúvida, estamos à disposição!"""
         
             <p>Olá, {nome}!</p>
             
-            <p>Segue abaixo a sua proposta de investimento:</p>
+            <p>Segue abaixo a sua proposta:</p>
             
-            <div style="text-align: center; margin: 30px 0;">
-                <img src="https://github.com/CarolinaExosk/api-email-bot/blob/main/public/mailing-06.png?raw=true" alt="Proposta de Investimento Cultura Inglesa" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-            </div>
+            <h3 style="color: #003366;">Investimento 1º estágio – Contrato Semestral</h3>
+            
+            <p><strong>Semestralidade com 30% OFF</strong><br>
+            6 parcelas iguais de R$ 389,90 (Boleto bancário)</p>
+            
+            <p><strong>Material didático com bônus de R$ 250,00</strong><br>
+            Por apenas R$ 498,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.</p>
+            
+            <p style="font-weight: bold; color: #cc0000;">Válido somente para a unidade Campina Grande-PB</p>
             
             <p>Qualquer dúvida, estamos à disposição!</p>
         
@@ -56,7 +73,6 @@ Qualquer dúvida, estamos à disposição!"""
         corpo_email_html = f"<p>Olá, {nome}! Em breve entraremos em contato com mais informações.</p>"
 
     # 3. Anexa as duas versões ao e-mail
-    # A ordem é IMPORTANTE: primeiro o texto simples, depois o HTML.
     msg.attach(MIMEText(corpo_email_texto, 'plain'))
     msg.attach(MIMEText(corpo_email_html, 'html'))
 
