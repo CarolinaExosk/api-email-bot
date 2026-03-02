@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from flask import Flask, jsonify, request
 
 def enviar_email(mail, nome, tipo_proposta):
-    # 'alternative' indica que vamos enviar duas versões: texto e HTML
+    # texto e HTML
     msg = MIMEMultipart('alternative')
     
     # 1. Configurações Básicas do E-mail
@@ -28,7 +28,7 @@ Semestralidade com 30% OFF
 6 parcelas iguais de R$ 389,90 (Boleto bancário)
 
 Material didático com bônus de R$ 250,00
-Por apenas R$ 498,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.
+Por apenas R$ 589,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.
 
 Válido somente para a unidade Campina Grande-PB
 
@@ -37,7 +37,6 @@ Qualquer dúvida, estamos à disposição!"""
         # Pode visualizar a proposta por este link: 
         # https://api-email-bot-seven.vercel.app/mailing-06.png
 
-        # Versão em HTML atualizada com o texto do chefe
         corpo_email_html = f"""
         <!DOCTYPE html>
         <html lang="pt-BR">
@@ -57,7 +56,7 @@ Qualquer dúvida, estamos à disposição!"""
             6 parcelas iguais de R$ 389,90 (Boleto bancário)</p>
             
             <p><strong>Material didático com bônus de R$ 250,00</strong><br>
-            Por apenas R$ 498,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.</p>
+            Por apenas R$ 589,90 no pix ou facilitado nos cartões de crédito em até 6 vezes sem juros.</p>
             
             <p style="font-weight: bold; color: #cc0000;">Válido somente para a unidade Campina Grande-PB</p>
             
